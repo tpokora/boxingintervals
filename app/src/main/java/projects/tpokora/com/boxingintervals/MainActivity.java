@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import projects.tpokora.com.boxingintervals.fragments.AbstractFragment;
 import projects.tpokora.com.boxingintervals.fragments.SettingsFragment;
 import projects.tpokora.com.boxingintervals.fragments.TimerFragment;
 
@@ -34,11 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
-            fragmentTransaction = getSupportFragmentManager().beginTransaction();
-
-            timerFragment = new TimerFragment();
-            state = 0;
-            fragmentTransaction.add(R.id.fragment_container, timerFragment).commit();
+            setupFragment();
         }
     }
 
@@ -58,19 +55,30 @@ public class MainActivity extends AppCompatActivity {
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
                 if (state == 0) {
-                    settingsFragment = new SettingsFragment();
                     state = 1;
-                    fragmentTransaction.replace(R.id.fragment_container, settingsFragment).addToBackStack(null).commit();
+                    changeFragment(new SettingsFragment());
                 } else {
-                    timerFragment = new TimerFragment();
                     state = 0;
-                    fragmentTransaction.replace(R.id.fragment_container, timerFragment).addToBackStack(null).commit();
+                    changeFragment(new TimerFragment());
+                    settingsButton.setText(getResources().getString(R.string.settings_button_string));
                 }
             }
         });
     }
 
+    private void setupFragment() {
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        timerFragment = new TimerFragment();
+        state = 0;
+        fragmentTransaction.add(R.id.fragment_container, timerFragment).commit();
+    }
+
     private void startTimer() {
 
+    }
+
+    private void changeFragment(AbstractFragment newFragment) {
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, newFragment).addToBackStack(null).commit();
     }
 }

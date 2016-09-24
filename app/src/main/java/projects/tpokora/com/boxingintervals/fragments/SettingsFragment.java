@@ -15,6 +15,8 @@ public class SettingsFragment extends AbstractFragment {
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle saveInstanceState) {
         setActivityTitle(getResources().getString(R.string.settings_fragment_header_string));
+        setSettingsButtonString(getResources().getString(R.string.settings_done_button_string));
+
         return layoutInflater.inflate(R.layout.fragment_settings, container, false);
     }
 }
