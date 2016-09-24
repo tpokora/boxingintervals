@@ -7,6 +7,8 @@
     <!-- Timer fragment strings -->
     <string name="timer_fragment_header_string">TIMER</string>
 
+    <string name="timer_intervals_title_string">Intervals</string>
+
     <!-- Settings fragment strings -->
     <string name="settings_fragment_header_string">SETTINGS</string>
     <string name="settings_done_button_string">DONE</string>

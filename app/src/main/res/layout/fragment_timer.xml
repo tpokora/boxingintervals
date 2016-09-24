@@ -9,8 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/timer_fragment_interval_counter_title_font_size"
-        android:textAlignment="center"
-        android:text="Interval #1"/>
+        android:textAlignment="center"/>
 
     <TextView
         android:id="@+id/interval_counter"
