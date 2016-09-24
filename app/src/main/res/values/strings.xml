@@ -9,4 +9,5 @@
 
     <!-- Settings fragment strings -->
     <string name="settings_fragment_header_string">SETTINGS</string>
+    <string name="settings_done_button_string">DONE</string>
 </resources>
