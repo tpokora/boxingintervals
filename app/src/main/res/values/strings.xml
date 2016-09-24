@@ -3,4 +3,10 @@
 
     <string name="start_button_string">START</string>
     <string name="settings_button_string">SETTINGS</string>
+
+    <!-- Timer fragment strings -->
+    <string name="timer_fragment_header_string">TIMER</string>
+
+    <!-- Settings fragment strings -->
+    <string name="settings_fragment_header_string">SETTINGS</string>
 </resources>
