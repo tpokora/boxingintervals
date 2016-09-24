@@ -3,6 +3,7 @@ package projects.tpokora.com.boxingintervals;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import projects.tpokora.com.boxingintervals.fragments.SettingsFragment;
 import projects.tpokora.com.boxingintervals.fragments.TimerFragment;
