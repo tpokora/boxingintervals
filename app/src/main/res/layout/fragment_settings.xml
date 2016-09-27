@@ -5,4 +5,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/settings_buffor_duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_buffor_string"/>
+
+    <TextView
+        android:id="@+id/settings_intervals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_intervals_string"/>
+
+    <TextView
+        android:id="@+id/settings_intervals_duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_intervals_duration_string"/>
+
+    <TextView
+        android:id="@+id/settings_break_duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_break_duration_string"/>
+
 </LinearLayout>

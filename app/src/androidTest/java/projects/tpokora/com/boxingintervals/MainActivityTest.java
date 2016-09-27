@@ -31,4 +31,12 @@ public class MainActivityTest {
         onView(withId(R.id.activity_title)).check(matches(withText(TestStrings.TIMER_HEADER)));
         onView(withId(R.id.settings_button)).check(matches(withText(TestStrings.TIMER_SETTINGS_BUTTON)));
     }
+
+    @Test
+    public void test_settingsFragmentIsShownOnSettingsButtonClick_success() {
+        onView(withId(R.id.settings_button)).perform(click());
+        onView(withId(R.id.activity_title)).check(matches(withText(TestStrings.TIMER_SETTINGS_HEADER)));
+        onView(withId(R.id.settings_button)).check(matches(withText(TestStrings.TIMER_SETTINGS_BUTTON_DONE)));
+        onView(withId(R.id.settings_fragment)).check(matches(isDisplayed()));
+    }
 }

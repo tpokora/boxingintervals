@@ -12,4 +12,8 @@
     <!-- Settings fragment strings -->
     <string name="settings_fragment_header_string">SETTINGS</string>
     <string name="settings_done_button_string">DONE</string>
+    <string name="settings_buffor_string">Buffor duration</string>
+    <string name="settings_intervals_string">Intervals amount</string>
+    <string name="settings_intervals_duration_string">Intervals duration</string>
+    <string name="settings_break_duration_string">Break duration</string>
 </resources>

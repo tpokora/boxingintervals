@@ -6,5 +6,7 @@ package projects.tpokora.com.boxingintervals;
 public class TestStrings {
 
     public static final String TIMER_HEADER = "TIMER";
+    public static final String TIMER_SETTINGS_HEADER = "SETTINGS";
     public static final String TIMER_SETTINGS_BUTTON = "SETTINGS";
+    public static final String TIMER_SETTINGS_BUTTON_DONE = "DONE";
 }
