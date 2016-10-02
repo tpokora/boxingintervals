@@ -8,6 +8,7 @@
     <dimen name="activity_title_font_size">20dp</dimen>
 
     <!-- Timer fragment dimensions -->
+    <dimen name="timer_fragment_buffor_font_size">24dp</dimen>
     <dimen name="timer_fragment_interval_counter_title_font_size">26dp</dimen>
     <dimen name="timer_fragment_interval_counter_font_size">60dp</dimen>
     <dimen name="timer_fragment_break_title_font_size">20dp</dimen>

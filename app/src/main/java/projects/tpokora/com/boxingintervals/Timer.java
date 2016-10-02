@@ -7,6 +7,8 @@ import java.util.Formatter;
  */
 public class Timer {
 
+    public final int SECOND = 60;
+
     private int buffor;
 
     private int intervals;
@@ -62,7 +64,7 @@ public class Timer {
 
         String hoursString = "00";
         String minutesString = minutes > 9 ? Float.toString(minutes) : "0" + minutes;
-        String secondsString = seconds > 9 ? Float.toString(seconds) : "0" + seconds;;
+        String secondsString = seconds > 9 ? Float.toString(seconds) : "0" + seconds;
 
         StringBuilder sb = new StringBuilder();
         Formatter formatter = new Formatter(sb);

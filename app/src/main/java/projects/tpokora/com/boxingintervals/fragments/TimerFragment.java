@@ -16,6 +16,7 @@ public class TimerFragment extends AbstractFragment {
 
     private Timer timer;
 
+    private TextView bufforTextView;
     private TextView intervalsTextView;
     private TextView intervalTimerTextView;
     private TextView breakTimerTextView;
@@ -40,7 +41,10 @@ public class TimerFragment extends AbstractFragment {
     }
 
     private void initTimerUI() {
-        intervalsTextView = (TextView) this.getActivity().findViewById(R.id.interval_counter_title);
+        bufforTextView = (TextView) getActivity().findViewById(R.id.buffor_title);
+        bufforTextView.setText(Integer.toString(timer.getBuffor()));
+
+        intervalsTextView = (TextView) getActivity().findViewById(R.id.interval_counter_title);
         intervalsTextView.setText(INTERVAL_NUMBER_STRING + " 1/" + timer.getIntervals());
 
         intervalTimerTextView = (TextView) getActivity().findViewById(R.id.interval_counter);

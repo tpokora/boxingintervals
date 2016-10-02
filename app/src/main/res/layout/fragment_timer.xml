@@ -6,6 +6,13 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/buffor_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/timer_fragment_buffor_font_size"
+        android:textAlignment="center"/>
+
+    <TextView
         android:id="@+id/interval_counter_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
