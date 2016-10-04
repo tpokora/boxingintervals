@@ -7,19 +7,20 @@ import java.util.Formatter;
  */
 public class Timer {
 
-    public final int SECOND = 60;
+    public static final int SECOND = 1000;
 
     private int buffor;
-
     private int intervals;
-    private int intervalDuration;
+    private int intervalMinute;
+    private int intervalSeconds;
 
     private int breakDuration;
 
-    public Timer(int buffor, int intervals, int intervalDuration, int breakDuration) {
+    public Timer(int buffor, int intervals, int intervalMinute, int intervalSeconds, int breakDuration) {
         this.buffor = buffor;
         this.intervals = intervals;
-        this.intervalDuration = intervalDuration;
+        this.intervalMinute = intervalMinute;
+        this.intervalSeconds = intervalSeconds;
         this.breakDuration = breakDuration;
     }
 
@@ -39,12 +40,20 @@ public class Timer {
         this.intervals = intervals;
     }
 
-    public int getIntervalDuration() {
-        return intervalDuration;
+    public int getIntervalMinute() {
+        return intervalMinute;
     }
 
-    public void setIntervalDuration(int intervalDuration) {
-        this.intervalDuration = intervalDuration;
+    public void setIntervalMinute(int intervalMinute) {
+        this.intervalMinute = intervalMinute;
+    }
+
+    public int getIntervalSeconds() {
+        return intervalSeconds;
+    }
+
+    public void setIntervalSeconds(int intervalSeconds) {
+        this.intervalSeconds = intervalSeconds;
     }
 
     public int getBreakDuration() {
@@ -56,21 +65,11 @@ public class Timer {
     }
 
     public String getTimerTime() {
-        float minutes = intervalDuration / 60;
-        float seconds = 0;
-        if (minutes % 60 > 0) {
-            seconds = intervalDuration - (minutes * 60);
-        }
+        return String.format("%02d", intervalMinute) + ":" + String.format("%02d", intervalSeconds);
+    }
 
-        String hoursString = "00";
-        String minutesString = minutes > 9 ? Float.toString(minutes) : "0" + minutes;
-        String secondsString = seconds > 9 ? Float.toString(seconds) : "0" + seconds;
-
-        StringBuilder sb = new StringBuilder();
-        Formatter formatter = new Formatter(sb);
-        formatter.format("%.2s:%.2s:%.2s", hoursString, minutesString, secondsString);
-
-        return sb.toString();
+    public int getIntervalDuration() {
+        return (intervalMinute * 60) + intervalSeconds;
     }
 
     public String getBreakDurationString() {
