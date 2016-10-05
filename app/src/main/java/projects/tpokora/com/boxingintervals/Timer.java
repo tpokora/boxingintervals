@@ -71,8 +71,4 @@ public class Timer {
     public int getIntervalDuration() {
         return (intervalMinute * 60) + intervalSeconds;
     }
-
-    public String getBreakDurationString() {
-        return Integer.toString(this.breakDuration);
-    }
 }

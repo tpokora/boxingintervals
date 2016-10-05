@@ -69,7 +69,7 @@ public class TimerFragment extends AbstractFragment {
         intervalTimerTextView.setText(timer.getTimerTime());
 
         breakTimerTextView = (TextView) getActivity().findViewById(R.id.break_timer);
-        breakTimerTextView.setText(timer.getBreakDurationString() + " s");
+        breakTimerTextView.setText(String.format("%02d s", timer.getBreakDuration()));
 
         // UI for timer
         timerHandler = new Handler();
@@ -118,24 +118,37 @@ public class TimerFragment extends AbstractFragment {
                     if (totalLeftSeconds == 0) {
                         if (intervalCounter > timer.getIntervals() - 1) {
                             interval = false;
-                            rest = true;
+                            startTime = SystemClock.uptimeMillis();
                         } else {
                             Log.d(DEBUG_TAG, "Interval counter increase");
                             intervalCounter++;
                             intervalsTextView.setText(String.format("%s %d/%d", INTERVAL_NUMBER_STRING, intervalCounter, timer.getIntervals()));
                             currentTime = 0;
                             startTime = SystemClock.uptimeMillis();
+                            interval = false;
+                            rest = true;
                         }
                     }
                 }
 
                 // start rest
                 if (rest) {
-                    // TODO: Breaks timer
                     Log.d(DEBUG_TAG, "Starting break");
                     intervalTimerTextView.setText(timer.getTimerTime());
-                    rest = false;
-                    //interval = true;
+                    timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
+                    currentTime = timeInMilliseconds;
+                    currentTimeSecs = (int) (currentTime / 1000);
+                    currentTimeSecs = currentTimeSecs % 60;
+                    totalLeftSeconds = timer.getBreakDuration() - currentTimeSecs;
+
+                    breakTimerTextView.setText(String.format("%02d s", totalLeftSeconds));
+
+                    if (totalLeftSeconds == 0) {
+                        breakTimerTextView.setText(String.format("%02d s", timer.getBreakDuration()));
+                        rest = false;
+                        interval = true;
+                        startTime = SystemClock.uptimeMillis();
+                    }
                 }
 
                 timerHandler.postDelayed(this, 1000);
