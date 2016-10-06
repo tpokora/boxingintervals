@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import projects.tpokora.com.boxingintervals.PropertyReader;
 import projects.tpokora.com.boxingintervals.R;
 import projects.tpokora.com.boxingintervals.Timer;
 
@@ -42,6 +43,7 @@ public class TimerFragment extends AbstractFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        loadTimerProperties(getActivity().getApplicationContext());
         setActivityTitle(getResources().getString(R.string.timer_fragment_header_string));
         setTimer();
         initTimerUI();
@@ -49,7 +51,10 @@ public class TimerFragment extends AbstractFragment {
 
     // test values
     public void setTimer() {
-        timer = new Timer(2, 2, 0, 5, 5);
+        int intervalDuration = timerProperties.get(PropertyReader.INTERVAL_DURATION);
+        int minutes = intervalDuration / 60;
+        int seconds = intervalDuration % 60;
+        timer = new Timer(timerProperties.get(PropertyReader.BUFFOR), timerProperties.get(PropertyReader.INTERVALS), minutes, seconds, timerProperties.get(PropertyReader.BREAK_DURATION));
     }
 
     private void initTimerUI() {
