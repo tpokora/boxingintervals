@@ -64,10 +64,6 @@ public class Timer {
         this.breakDuration = breakDuration;
     }
 
-    public String getTimerTime() {
-        return String.format("%02d", intervalMinute) + ":" + String.format("%02d", intervalSeconds);
-    }
-
     public int getIntervalDuration() {
         return (intervalMinute * 60) + intervalSeconds;
     }
