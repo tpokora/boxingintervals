@@ -39,4 +39,8 @@ public class PropertyReader {
 
         return properties;
     }
+
+    public void savePropertiesToFile(Properties properties) {
+
+    }
 }
