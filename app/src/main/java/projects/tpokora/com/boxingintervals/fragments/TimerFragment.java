@@ -49,6 +49,12 @@ public class TimerFragment extends AbstractFragment {
         initTimerUI();
     }
 
+    @Override
+    public void onViewStateRestored(Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        setTimer();
+    }
+
     // test values
     public void setTimer() {
         int intervalDuration = timerProperties.get(PropertyReader.INTERVAL_DURATION);

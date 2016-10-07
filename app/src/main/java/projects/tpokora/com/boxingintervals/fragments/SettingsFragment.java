@@ -1,6 +1,7 @@
 package projects.tpokora.com.boxingintervals.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -136,11 +137,13 @@ public class SettingsFragment extends AbstractFragment {
             }
         });
 
-        saveSettingsButton = (Button) getActivity().findViewById(R.id.settings_button);
+        saveSettingsButton = (Button) getActivity().findViewById(R.id.save_settings);
         saveSettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // TODO: Save settings to file
+                //propertyReader.savePropertiesToFile(timerProperties);
+                getActivity().getSupportFragmentManager().popBackStack();
             }
         });
     }

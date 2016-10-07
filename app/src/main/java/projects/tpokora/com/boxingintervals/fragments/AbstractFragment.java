@@ -17,12 +17,10 @@ import projects.tpokora.com.boxingintervals.R;
  */
 public abstract class AbstractFragment extends Fragment {
 
-    protected static final String PROPERTIES_FILE = "timer.properties";
-
     private TextView activityTitleTextView;
     private Button settingsButton;
 
-    private PropertyReader propertyReader;
+    protected PropertyReader propertyReader;
 
     protected HashMap<String, Integer> timerProperties;
 
@@ -42,7 +40,7 @@ public abstract class AbstractFragment extends Fragment {
 
     protected void loadTimerProperties(Context context) {
         propertyReader = new PropertyReader(context);
-        Properties properties = propertyReader.getProperties(PROPERTIES_FILE);
+        Properties properties = propertyReader.getProperties();
 
         for (final Map.Entry<Object, Object> entry : properties.entrySet()) {
             timerProperties.put((String) entry.getKey(), Integer.valueOf((String) entry.getValue()));

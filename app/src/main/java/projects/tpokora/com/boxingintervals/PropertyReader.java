@@ -4,8 +4,12 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.util.Log;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -13,6 +17,9 @@ import java.util.Properties;
  */
 
 public class PropertyReader {
+
+    private static final String DEBUG_TAG = "PropertyReader";
+    private static final String PROPERTIES_FILE = "timer.properties";
 
     public final static String BUFFOR = "buffor";
     public final static String INTERVALS = "intervals";
@@ -28,19 +35,31 @@ public class PropertyReader {
         properties = new Properties();
     }
 
-    public Properties getProperties(String filename) {
+    public Properties getProperties() {
         try {
             AssetManager assetManager = context.getAssets();
-            InputStream inputStream = assetManager.open(filename);
+            InputStream inputStream = assetManager.open(PROPERTIES_FILE);
             properties.load(inputStream);
         } catch (IOException ioe) {
-            Log.e(PropertyReader.this.getClass().getName(), "Could no read " + filename);
+            Log.e(PropertyReader.this.getClass().getName(), "Could not read " + PROPERTIES_FILE);
         }
 
         return properties;
     }
 
-    public void savePropertiesToFile(Properties properties) {
+    public void savePropertiesToFile(HashMap<String, Integer> timerProperties) {
+        // TODO: impossible to save file to assets
+        Iterator iterator = timerProperties.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry entry = (Map.Entry) iterator.next();
+            properties.put(entry.getKey(), entry.getValue());
+        }
 
+        try {
+            properties.store(new FileOutputStream(PROPERTIES_FILE), null);
+            Log.d(DEBUG_TAG, "Properties saved");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
