@@ -1,10 +1,12 @@
 package projects.tpokora.com.boxingintervals.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import projects.tpokora.com.boxingintervals.PropertyReader;
@@ -20,10 +22,10 @@ public class SettingsFragment extends AbstractFragment {
 
     private SettingsFragment thisFragment;
 
-    private TextView bufforTextView;
-    private TextView intervalsAmountTextView;
-    private TextView intervalsDurationTextView;
-    private TextView breakDurationTextView;
+    private EditText bufforTextView;
+    private EditText intervalsAmountTextView;
+    private EditText intervalsDurationTextView;
+    private EditText breakDurationTextView;
 
     private Button bufforDecreaseButton;
     private Button bufforIncreaseButton;
@@ -60,16 +62,16 @@ public class SettingsFragment extends AbstractFragment {
     }
 
     private void initSettingsUI() {
-        bufforTextView = (TextView) getActivity().findViewById(R.id.buffor_amount);
+        bufforTextView = (EditText) getActivity().findViewById(R.id.buffor_amount);
         setBufforTextViewValue();
 
-        intervalsAmountTextView = (TextView) getActivity().findViewById(R.id.interval_amount);
+        intervalsAmountTextView = (EditText) getActivity().findViewById(R.id.interval_amount);
         setIntervalsTextViewValue();
 
-        intervalsDurationTextView = (TextView) getActivity().findViewById(R.id.interval_duration_amount);
+        intervalsDurationTextView = (EditText) getActivity().findViewById(R.id.interval_duration_amount);
         setIntervalDurationTextViewValue();
 
-        breakDurationTextView = (TextView) getActivity().findViewById(R.id.break_duration);
+        breakDurationTextView = (EditText) getActivity().findViewById(R.id.break_duration);
         setBreakDurationTextViewValue();
 
         // Change timer properties buttons
@@ -149,6 +151,7 @@ public class SettingsFragment extends AbstractFragment {
         saveSettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getEditTextValues();
                 propertyReader.saveProperties(thisFragment, timerProperties);
                 getActivity().getSupportFragmentManager().popBackStack();
             }
@@ -184,5 +187,12 @@ public class SettingsFragment extends AbstractFragment {
 
     private void setBreakDurationTextViewValue() {
         breakDurationTextView.setText(Integer.toString(timerProperties.get(PropertyReader.BREAK_DURATION)));
+    }
+
+    private void getEditTextValues() {
+        timerProperties.put(PropertyReader.BUFFOR, Integer.valueOf(bufforTextView.getText().toString()));
+        timerProperties.put(PropertyReader.INTERVALS, Integer.valueOf(intervalsAmountTextView.getText().toString()));
+        timerProperties.put(PropertyReader.INTERVAL_DURATION, Integer.valueOf(intervalsDurationTextView.getText().toString()));
+        timerProperties.put(PropertyReader.BREAK_DURATION, Integer.valueOf(breakDurationTextView.getText().toString()));
     }
 }

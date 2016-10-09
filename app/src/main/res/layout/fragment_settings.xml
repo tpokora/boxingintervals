@@ -33,12 +33,13 @@
                     android:layout_height="wrap_content"
                     android:text="@string/settings_decrease"/>
 
-                <TextView
+                <EditText
                     android:id="@+id/buffor_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="@string/settings_value"/>
+                    android:text="@string/settings_value"
+                    android:maxLength="3"/>
 
                 <Button
                     android:id="@+id/buffor_increase"
@@ -71,12 +72,13 @@
                     android:layout_height="wrap_content"
                     android:text="@string/settings_decrease"/>
 
-                <TextView
+                <EditText
                     android:id="@+id/interval_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="@string/settings_value"/>
+                    android:text="@string/settings_value"
+                    android:maxLength="3"/>
 
                 <Button
                     android:id="@+id/interval_increase"
@@ -109,12 +111,13 @@
                     android:layout_height="wrap_content"
                     android:text="@string/settings_decrease"/>
 
-                <TextView
+                <EditText
                     android:id="@+id/interval_duration_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="@string/settings_value"/>
+                    android:text="@string/settings_value"
+                    android:maxLength="3"/>
 
                 <Button
                     android:id="@+id/interval_duration_increase"
@@ -148,12 +151,14 @@
                     android:layout_height="wrap_content"
                     android:text="@string/settings_decrease"/>
 
-                <TextView
+                <EditText
                     android:id="@+id/break_duration"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="@string/settings_value"/>
+                    android:text="@string/settings_value"
+                    android:maxLength="3"
+                    />
 
                 <Button
                     android:id="@+id/break_duration_increase"
