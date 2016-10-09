@@ -1,7 +1,6 @@
 package projects.tpokora.com.boxingintervals.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +17,8 @@ public class SettingsFragment extends AbstractFragment {
 
     private static final String INCREASE = "increase";
     private static final String DECREASE = "decrease";
+
+    private SettingsFragment thisFragment;
 
     private TextView bufforTextView;
     private TextView intervalsAmountTextView;
@@ -46,9 +47,16 @@ public class SettingsFragment extends AbstractFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        loadTimerProperties(getActivity().getApplicationContext());
+        thisFragment = this;
+        timerProperties = propertyReader.loadProperties(this);
         setActivityTitle(getResources().getString(R.string.timer_fragment_header_string));
         initSettingsUI();
+    }
+
+    @Override
+    public void onViewStateRestored(Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        timerProperties = propertyReader.loadProperties(this);
     }
 
     private void initSettingsUI() {
@@ -141,8 +149,7 @@ public class SettingsFragment extends AbstractFragment {
         saveSettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Save settings to file
-                //propertyReader.savePropertiesToFile(timerProperties);
+                propertyReader.saveProperties(thisFragment, timerProperties);
                 getActivity().getSupportFragmentManager().popBackStack();
             }
         });

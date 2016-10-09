@@ -43,7 +43,7 @@ public class TimerFragment extends AbstractFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        loadTimerProperties(getActivity().getApplicationContext());
+        timerProperties = propertyReader.loadProperties(this);
         setActivityTitle(getResources().getString(R.string.timer_fragment_header_string));
         setTimer();
         initTimerUI();
@@ -52,10 +52,10 @@ public class TimerFragment extends AbstractFragment {
     @Override
     public void onViewStateRestored(Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
+        timerProperties = propertyReader.loadProperties(this);
         setTimer();
     }
 
-    // test values
     public void setTimer() {
         int intervalDuration = timerProperties.get(PropertyReader.INTERVAL_DURATION);
         int minutes = intervalDuration / 60;
@@ -196,7 +196,6 @@ public class TimerFragment extends AbstractFragment {
     }
 
     private String setIntervalTimerTextViewText(int minutes, int seconds) {
-        //String.format("%02d:%02d", calculateMinutes(totalLeftSeconds), secondsToShow)
         return String.format("%02d:%02d", minutes, seconds);
     }
 

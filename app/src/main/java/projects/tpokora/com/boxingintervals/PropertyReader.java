@@ -1,65 +1,51 @@
 package projects.tpokora.com.boxingintervals;
 
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.util.Log;
+import android.content.SharedPreferences;
+import android.support.v4.app.Fragment;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Properties;
 
 /**
  * Created by pokor on 06.10.2016.
  */
 
 public class PropertyReader {
-
     private static final String DEBUG_TAG = "PropertyReader";
-    private static final String PROPERTIES_FILE = "timer.properties";
+
+    protected SharedPreferences sharedPreferences;
+    protected SharedPreferences.Editor editor;
+
+    private static final int PREFERENCE_MODE_PRIVATE = 0;
 
     public final static String BUFFOR = "buffor";
     public final static String INTERVALS = "intervals";
     public final static String INTERVAL_DURATION= "interval.duration";
     public final static String BREAK_DURATION = "break.duration";
+    private HashMap<String, Integer> timerProperties;
 
-    private Context context;
-    private Properties properties;
-
-    public PropertyReader(Context context) {
-        this.context = context;
-
-        properties = new Properties();
+    public PropertyReader() {
+        timerProperties = new HashMap<>();
     }
 
-    public Properties getProperties() {
-        try {
-            AssetManager assetManager = context.getAssets();
-            InputStream inputStream = assetManager.open(PROPERTIES_FILE);
-            properties.load(inputStream);
-        } catch (IOException ioe) {
-            Log.e(PropertyReader.this.getClass().getName(), "Could not read " + PROPERTIES_FILE);
-        }
+    public void saveProperties(Fragment fragment, HashMap<String, Integer> propertiesMap) {
+        sharedPreferences = fragment.getActivity().getPreferences(PREFERENCE_MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
-        return properties;
+        editor.putInt(BUFFOR, propertiesMap.get(BUFFOR));
+        editor.putInt(INTERVALS, propertiesMap.get(INTERVALS));
+        editor.putInt(INTERVAL_DURATION, propertiesMap.get(INTERVAL_DURATION));
+        editor.putInt(BREAK_DURATION, propertiesMap.get(BREAK_DURATION));
+        editor.commit();
     }
 
-    public void savePropertiesToFile(HashMap<String, Integer> timerProperties) {
-        // TODO: impossible to save file to assets
-        Iterator iterator = timerProperties.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry entry = (Map.Entry) iterator.next();
-            properties.put(entry.getKey(), entry.getValue());
-        }
+    public HashMap<String, Integer> loadProperties(Fragment fragment) {
+        sharedPreferences = fragment.getActivity().getPreferences(PREFERENCE_MODE_PRIVATE);
 
-        try {
-            properties.store(new FileOutputStream(PROPERTIES_FILE), null);
-            Log.d(DEBUG_TAG, "Properties saved");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        timerProperties.put(BUFFOR, sharedPreferences.getInt(BUFFOR, 0));
+        timerProperties.put(INTERVALS, sharedPreferences.getInt(INTERVALS, 0));
+        timerProperties.put(INTERVAL_DURATION, sharedPreferences.getInt(INTERVAL_DURATION, 0));
+        timerProperties.put(BREAK_DURATION, sharedPreferences.getInt(BREAK_DURATION, 0));
+
+        return timerProperties;
     }
 }
