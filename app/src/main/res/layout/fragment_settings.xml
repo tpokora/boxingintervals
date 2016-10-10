@@ -15,7 +15,9 @@
             android:id="@+id/save_settings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SAVE"/>
+            android:text="SAVE"
+            android:textColor="@color/activity_text_color"
+            android:background="@color/button_color"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,7 +28,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="@string/settings_buffor_duration_string" />
+                android:text="@string/settings_buffor_duration_string"
+                android:textColor="@color/activity_text_color" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,21 +40,26 @@
                     android:id="@+id/buffor_decrease"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/settings_decrease"/>
+                    android:text="@string/settings_decrease"
+                    android:textColor="@color/activity_text_color"
+                    android:background="@color/button_color"/>
 
                 <EditText
                     android:id="@+id/buffor_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:maxLength="3"
                     android:text="@string/settings_value"
-                    android:maxLength="3"/>
+                    android:textColor="@color/activity_text_color" />
 
                 <Button
                     android:id="@+id/buffor_increase"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/settings_increase"/>
+                    android:text="@string/settings_increase"
+                    android:textColor="@color/activity_text_color"
+                    android:background="@color/button_color"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -65,7 +73,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="@string/settings_intervals_string" />
+                android:text="@string/settings_intervals_string"
+                android:textColor="@color/activity_text_color" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -76,21 +85,26 @@
                     android:id="@+id/interval_decrease"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/settings_decrease"/>
+                    android:text="@string/settings_decrease"
+                    android:textColor="@color/activity_text_color"
+                    android:background="@color/button_color"/>
 
                 <EditText
                     android:id="@+id/interval_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:maxLength="3"
                     android:text="@string/settings_value"
-                    android:maxLength="3"/>
+                    android:textColor="@color/activity_text_color" />
 
                 <Button
                     android:id="@+id/interval_increase"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/settings_increase"/>
+                    android:text="@string/settings_increase"
+                    android:textColor="@color/activity_text_color"
+                    android:background="@color/button_color"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -104,7 +118,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="@string/settings_intervals_duration_string" />
+                android:text="@string/settings_intervals_duration_string"
+                android:textColor="@color/activity_text_color" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -115,21 +130,26 @@
                     android:id="@+id/interval_duration_decrease"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/settings_decrease"/>
+                    android:text="@string/settings_decrease"
+                    android:textColor="@color/activity_text_color"
+                    android:background="@color/button_color"/>
 
                 <EditText
                     android:id="@+id/interval_duration_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:maxLength="3"
                     android:text="@string/settings_value"
-                    android:maxLength="3"/>
+                    android:textColor="@color/activity_text_color" />
 
                 <Button
                     android:id="@+id/interval_duration_increase"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/settings_increase"/>
+                    android:text="@string/settings_increase"
+                    android:textColor="@color/activity_text_color"
+                    android:background="@color/button_color"/>
 
 
             </LinearLayout>
@@ -144,7 +164,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="@string/settings_break_duration_string" />
+                android:text="@string/settings_break_duration_string"
+                android:textColor="@color/activity_text_color" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -155,22 +176,26 @@
                     android:id="@+id/break_duration_decrease"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/settings_decrease"/>
+                    android:text="@string/settings_decrease"
+                    android:textColor="@color/activity_text_color"
+                    android:background="@color/button_color"/>
 
                 <EditText
                     android:id="@+id/break_duration"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="@string/settings_value"
                     android:maxLength="3"
-                    />
+                    android:text="@string/settings_value"
+                    android:textColor="@color/activity_text_color" />
 
                 <Button
                     android:id="@+id/break_duration_increase"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/settings_increase"/>
+                    android:text="@string/settings_increase"
+                    android:textColor="@color/activity_text_color"
+                    android:background="@color/button_color"/>
 
 
             </LinearLayout>

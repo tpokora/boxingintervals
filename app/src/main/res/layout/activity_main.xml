@@ -1,46 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="projects.tpokora.com.boxingintervals.MainActivity">
+    tools:context="projects.tpokora.com.boxingintervals.MainActivity"
+    android:background="@color/activity_background">
 
     <TextView
         android:id="@+id/activity_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_title_margin"
-        android:layout_alignParentTop="true"
         android:text="@string/timer_fragment_header_string"
         android:textSize="@dimen/activity_title_font_size"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:textColor="@color/activity_text_color"
+        />
 
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"/>
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
 
     <LinearLayout
         android:id="@+id/buttons_panel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="bottom">
 
         <Button
             android:id="@+id/start_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/start_button_string" />
+            android:text="@string/start_button_string"
+            android:textColor="@color/activity_text_color"
+            android:background="@color/button_color"/>
 
         <Button
             android:id="@+id/settings_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/settings_button_string" />
+            android:text="@string/settings_button_string"
+            android:textColor="@color/activity_text_color"
+            android:background="@color/button_color"
+            />
     </LinearLayout>
 
 
-</RelativeLayout>
+</LinearLayout>

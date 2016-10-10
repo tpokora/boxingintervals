@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!-- Activity colors -->
+    <color name="activity_background">#2d2d2d</color>
+    <color name="activity_text_color">#d1d1d1</color>
+    <color name="button_color">#181818</color>
 </resources>
