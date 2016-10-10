@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
     private FragmentTransaction fragmentTransaction;
 
     private TimerFragment timerFragment;
-    private SettingsFragment settingsFragment;
 
     private Button startButton;
     private Button settingsButton;

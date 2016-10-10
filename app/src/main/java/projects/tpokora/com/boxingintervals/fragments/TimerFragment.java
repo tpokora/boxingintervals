@@ -95,7 +95,6 @@ public class TimerFragment extends AbstractFragment {
             private long currentTime = 0L;
             private int currentTimeSecs = 0;
             private int totalLeftSeconds = 0;
-            private int mins = 0;
             private int secondsToShow = 0;
 
             private int intervalCounter = 1;
@@ -166,7 +165,9 @@ public class TimerFragment extends AbstractFragment {
 
                 if (!buffor && !interval && !rest) {
                     Log.d(DEBUG_TAG, "Stopping timer");
-                    timerHandler.removeCallbacks(timerRunnable);
+                    timerHandler.removeMessages(0);
+                    startTimerButton.setText(getResources().getString(R.string.start_button_string));
+                    playRingBellSound();
                 }
             }
 
