@@ -53,11 +53,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
-                if (state == 0) {
-                    state = 1;
+                if (settingsButton.getText().equals(getResources().getString(R.string.settings_button_string))) {
                     changeFragment(new SettingsFragment());
                 } else {
-                    state = 0;
                     changeFragment(new TimerFragment());
                     settingsButton.setText(getResources().getString(R.string.settings_button_string));
                 }

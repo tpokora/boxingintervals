@@ -36,6 +36,7 @@ public class SettingsFragment extends AbstractFragment {
     private Button breakDurationIncreaseButton;
 
     private Button saveSettingsButton;
+    private Button settingsButton;
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle saveInstanceState) {
@@ -153,8 +154,11 @@ public class SettingsFragment extends AbstractFragment {
                 getEditTextValues();
                 propertyReader.saveProperties(thisFragment, timerProperties);
                 getActivity().getSupportFragmentManager().popBackStack();
+                settingsButton.setText(R.string.settings_button_string);
             }
         });
+
+        settingsButton = (Button) getActivity().findViewById(R.id.settings_button);
     }
 
     private void changeAmount(String action, String property) {
