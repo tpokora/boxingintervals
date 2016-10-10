@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import projects.tpokora.com.boxingintervals.PropertyReader;
 import projects.tpokora.com.boxingintervals.R;
@@ -41,7 +40,7 @@ public class SettingsFragment extends AbstractFragment {
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle saveInstanceState) {
         setActivityTitle(getResources().getString(R.string.settings_fragment_header_string));
-        setSettingsButtonString(getResources().getString(R.string.settings_save_button_string));
+        setSettingsButtonString(getResources().getString(R.string.settings_button_timer_string));
 
         return layoutInflater.inflate(R.layout.fragment_settings, container, false);
     }

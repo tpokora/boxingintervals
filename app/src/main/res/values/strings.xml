@@ -19,4 +19,5 @@
     <string name="settings_value">Amount</string>
     <string name="settings_increase">+</string>
     <string name="settings_decrease">-</string>
+    <string name="settings_button_timer_string">TIMER</string>
 </resources>
