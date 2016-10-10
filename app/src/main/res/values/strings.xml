@@ -2,6 +2,7 @@
     <string name="app_name">BoxingIntervals</string>
 
     <string name="start_button_string">START</string>
+    <string name="start_button_stop_string">STOP</string>
     <string name="settings_button_string">SETTINGS</string>
 
     <!-- Timer fragment strings -->

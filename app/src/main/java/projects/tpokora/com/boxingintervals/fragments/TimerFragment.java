@@ -1,5 +1,6 @@
 package projects.tpokora.com.boxingintervals.fragments;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import projects.tpokora.com.boxingintervals.PropertyReader;
 import projects.tpokora.com.boxingintervals.R;
@@ -28,12 +30,15 @@ public class TimerFragment extends AbstractFragment {
     private TextView breakTimerTextView;
 
     private Button startTimerButton;
+    private int startTimerStatus = 0;
 
     private Timer timer;
     private Handler timerHandler;
     private Runnable timerRunnable;
 
     private long startTime = 0L;
+
+    private MediaPlayer mediaPlayer;
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle saveInstanceState) {
@@ -64,6 +69,8 @@ public class TimerFragment extends AbstractFragment {
     }
 
     private void initTimerUI() {
+        mediaPlayer = MediaPlayer.create(getActivity().getBaseContext(), R.raw.boxingbellsound);
+
         bufforTextView = (TextView) getActivity().findViewById(R.id.buffor_title);
         bufforTextView.setText(String.format("%02d", timer.getBuffor()));
 
@@ -106,6 +113,7 @@ public class TimerFragment extends AbstractFragment {
                         currentTime = 0;
                         currentTimeSecs = 0;
                         resetStartTime();
+                        playRingBellSound();
                     }
                 }
 
@@ -131,6 +139,7 @@ public class TimerFragment extends AbstractFragment {
                             interval = false;
                             if (intervalCounter <= timer.getIntervals()) {
                                 rest = true;
+                                playRingBellSound();
                             }
                         }
                     }
@@ -149,6 +158,7 @@ public class TimerFragment extends AbstractFragment {
                         rest = false;
                         interval = true;
                         resetStartTime();
+                        playRingBellSound();
                     }
                 }
 
@@ -184,9 +194,22 @@ public class TimerFragment extends AbstractFragment {
         startTimerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startTime = SystemClock.uptimeMillis();
-                timerHandler.postDelayed(timerRunnable, 0);
-                Log.d(DEBUG_TAG, "Start timer");
+                if (startTimerStatus == 0) {
+                    setTimer();
+                    startTime = SystemClock.uptimeMillis();
+                    timerHandler.postDelayed(timerRunnable, 0);
+                    Log.d(DEBUG_TAG, "Start timer");
+                    startTimerButton.setText(getResources().getString(R.string.start_button_stop_string));
+                    startTimerStatus = 1;
+                    initTimerUI();
+                } else {
+                    setTimer();
+                    timerHandler.removeMessages(0);
+                    startTimerButton.setText(getResources().getString(R.string.start_button_string));
+                    startTimerStatus = 0;
+                    initTimerUI();
+                }
+
             }
         });
     }
@@ -197,6 +220,11 @@ public class TimerFragment extends AbstractFragment {
 
     private String setIntervalTimerTextViewText(int minutes, int seconds) {
         return String.format("%02d:%02d", minutes, seconds);
+    }
+
+    private void playRingBellSound() {
+        mediaPlayer.start();
+        Toast.makeText(getContext(), "BELL RING", Toast.LENGTH_LONG);
     }
 
 }
