@@ -176,7 +176,6 @@ public class TimerFragment extends AbstractFragment {
 
             private int calculateCurrentTimeSecs(long timeInMilliseconds) {
                 currentTimeSecs = (int) (timeInMilliseconds / 1000);
-                currentTimeSecs = currentTimeSecs % 60;
                 return currentTimeSecs;
             }
 
