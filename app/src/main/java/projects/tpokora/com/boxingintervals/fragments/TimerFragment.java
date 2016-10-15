@@ -129,6 +129,7 @@ public class TimerFragment extends AbstractFragment {
                         if (intervalCounter > timer.getIntervals() - 1) {
                             interval = false;
                             resetStartTime();
+                            playRingBellSound();
                         } else {
                             Log.d(DEBUG_TAG, "Interval counter increase");
                             intervalCounter++;
@@ -138,8 +139,8 @@ public class TimerFragment extends AbstractFragment {
                             interval = false;
                             if (intervalCounter <= timer.getIntervals()) {
                                 rest = true;
-                                playRingBellSound();
                             }
+                            playRingBellSound();
                         }
                     }
                 }
