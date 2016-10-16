@@ -11,15 +11,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/save_settings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="SAVE"
-            android:layout_marginBottom="@dimen/setting_fragment_save_button_margin"
-            android:textColor="@color/activity_text_color"
-            android:background="@color/button_color"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

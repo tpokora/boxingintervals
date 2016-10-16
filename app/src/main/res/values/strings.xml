@@ -12,7 +12,7 @@
 
     <!-- Settings fragment strings -->
     <string name="settings_fragment_header_string">SETTINGS</string>
-    <string name="settings_save_button_string">SAVE</string>
+    <string name="save_button_string">SAVE</string>
     <string name="settings_buffor_duration_string">Buffor duration</string>
     <string name="settings_intervals_string">Intervals amount</string>
     <string name="settings_intervals_duration_string">Intervals duration</string>

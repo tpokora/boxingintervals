@@ -29,7 +29,6 @@ public class TimerFragment extends AbstractFragment {
     private TextView intervalTimerTextView;
     private TextView breakTimerTextView;
 
-    private Button startTimerButton;
     private int startTimerStatus = 0;
 
     private Timer timer;
@@ -42,6 +41,9 @@ public class TimerFragment extends AbstractFragment {
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle saveInstanceState) {
+        setTimerButtonString(getResources().getString(R.string.start_button_string));
+        setSettingsButtonString(getResources().getString(R.string.settings_button_string));
+
         return layoutInflater.inflate(R.layout.fragment_timer, container, false);
     }
 
@@ -167,7 +169,7 @@ public class TimerFragment extends AbstractFragment {
                 if (!buffor && !interval && !rest) {
                     Log.d(DEBUG_TAG, "Stopping timer");
                     timerHandler.removeMessages(0);
-                    startTimerButton.setText(getResources().getString(R.string.start_button_string));
+                    timmerButton.setText(getResources().getString(R.string.start_button_string));
                     playRingBellSound();
                 }
             }
@@ -191,8 +193,8 @@ public class TimerFragment extends AbstractFragment {
 
         };
 
-        startTimerButton = (Button) getActivity().findViewById(R.id.start_button);
-        startTimerButton.setOnClickListener(new View.OnClickListener() {
+        timmerButton = (Button) getActivity().findViewById(R.id.start_button);
+        timmerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (startTimerStatus == 0) {
@@ -200,17 +202,25 @@ public class TimerFragment extends AbstractFragment {
                     startTime = SystemClock.uptimeMillis();
                     timerHandler.postDelayed(timerRunnable, 0);
                     Log.d(DEBUG_TAG, "Start timer");
-                    startTimerButton.setText(getResources().getString(R.string.start_button_stop_string));
+                    timmerButton.setText(getResources().getString(R.string.start_button_stop_string));
                     startTimerStatus = 1;
                     initTimerUI();
                 } else {
                     setTimer();
                     timerHandler.removeMessages(0);
-                    startTimerButton.setText(getResources().getString(R.string.start_button_string));
+                    timmerButton.setText(getResources().getString(R.string.start_button_string));
                     startTimerStatus = 0;
                     initTimerUI();
                 }
 
+            }
+        });
+
+        settingsButton = (Button) getActivity().findViewById(R.id.settings_button);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeFragment(new SettingsFragment());
             }
         });
     }

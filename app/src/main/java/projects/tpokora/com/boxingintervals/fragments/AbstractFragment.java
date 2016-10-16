@@ -15,7 +15,8 @@ import projects.tpokora.com.boxingintervals.R;
 public abstract class AbstractFragment extends Fragment {
 
     private TextView activityTitleTextView;
-    private Button settingsButton;
+    protected Button settingsButton;
+    protected Button timmerButton;
 
     protected PropertyReader propertyReader;
 
@@ -31,8 +32,17 @@ public abstract class AbstractFragment extends Fragment {
         activityTitleTextView.setText(activityTitle);
     }
 
-    protected void setSettingsButtonString(String buttonString) {
+    protected void setSettingsButtonString(String settingsButtonString) {
         settingsButton = (Button) this.getActivity().findViewById(R.id.settings_button);
-        settingsButton.setText(buttonString);
+        settingsButton.setText(settingsButtonString);
+    }
+
+    protected void setTimerButtonString(String timerButtonString) {
+        timmerButton = (Button) this.getActivity().findViewById(R.id.start_button);
+        timmerButton.setText(timerButtonString);
+    }
+
+    protected void changeFragment(AbstractFragment newFragment) {
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newFragment).commit();
     }
 }

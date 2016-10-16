@@ -34,12 +34,10 @@ public class SettingsFragment extends AbstractFragment {
     private Button breakDurationDecreaseButton;
     private Button breakDurationIncreaseButton;
 
-    private Button saveSettingsButton;
-    private Button settingsButton;
-
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle saveInstanceState) {
         setActivityTitle(getResources().getString(R.string.settings_fragment_header_string));
+        setTimerButtonString(getResources().getString(R.string.save_button_string));
         setSettingsButtonString(getResources().getString(R.string.settings_button_timer_string));
 
         return layoutInflater.inflate(R.layout.fragment_settings, container, false);
@@ -146,18 +144,25 @@ public class SettingsFragment extends AbstractFragment {
             }
         });
 
-        saveSettingsButton = (Button) getActivity().findViewById(R.id.save_settings);
-        saveSettingsButton.setOnClickListener(new View.OnClickListener() {
+        timmerButton = (Button) getActivity().findViewById(R.id.start_button);
+        timmerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getEditTextValues();
                 propertyReader.saveProperties(thisFragment, timerProperties);
-                getActivity().getSupportFragmentManager().popBackStack();
-                settingsButton.setText(R.string.settings_button_string);
+                changeFragment(new TimerFragment());
             }
         });
 
         settingsButton = (Button) getActivity().findViewById(R.id.settings_button);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getEditTextValues();
+                propertyReader.saveProperties(thisFragment, timerProperties);
+                changeFragment(new TimerFragment());
+            }
+        });
     }
 
     private void changeAmount(String action, String property) {
